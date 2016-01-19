@@ -87,6 +87,7 @@ var TodoStore = {
   },
 
   addChangedHandler: function (handler) {
+    console.log(handler);
     _callbacks.push(handler);
   },
 
