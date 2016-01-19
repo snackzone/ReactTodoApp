@@ -11,9 +11,8 @@ class Api::TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
-    @todo.create!
-    render json: @todo.to_json
+    todo = Todo.create!(todo_params)
+    render json: todo.to_json
   end
 
   def update
