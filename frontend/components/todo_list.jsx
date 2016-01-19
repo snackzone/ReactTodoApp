@@ -1,5 +1,6 @@
 var React = require('react');
 var TodoStore = require('../stores/todo_store.js');
+var TodoListItem = require('./todo_list_item.jsx');
 
 var TodoList = React.createClass({
   getInitialState: function () {
@@ -24,7 +25,7 @@ var TodoList = React.createClass({
   render: function () {
     var todos = [];
     Object.keys(this.state.todoStore).forEach(function(id) {
-      var todo = <li key={id}>{this.state.todoStore[id].title}</li>;
+      var todo = <TodoListItem key={id} todo={this.state.todoStore[id]}/>;
       todos.push(todo);
     }.bind(this));
 
