@@ -1,22 +1,34 @@
 var React = require('react');
 var TodoStore = require('../stores/todo_store');
+var DoneButton = require('./done_button.jsx');
+var TodoDetailView = require('./todo_detail_view.jsx');
 
 var TodoListItem = React.createClass({
-  handleDestroy: function (e) {
+  getInitialState: function () {
+    return (
+      { viewDetails: false }
+    );
+  },
+
+  toggleVisibility: function (e) {
     e.preventDefault();
-    TodoStore.destroy(this.props.todo.id);
+    this.setState({viewDetails: !this.state.viewDetails});
   },
 
   render: function () {
+    var details;
+
+    if (this.state.viewDetails) {
+      details = <TodoDetailView todo={this.props.todo}/>;
+    }
+
     return (
-      <li>
+      <li onClick={this.toggleVisibility}>
         <div className="title">
           {this.props.todo.title}
         </div>
-        <div className="body">
-          {this.props.todo.body}
-        </div>
-        <button onClick={this.handleDestroy}>Delete Todo</button>
+        <DoneButton todo={this.props.todo}/>
+        {details}
       </li>
     );
   }
