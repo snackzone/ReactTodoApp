@@ -5,7 +5,7 @@ var StepList = React.createClass({
   render: function () {
     var steps = [];
     Object.keys(this.props.steps).forEach(function(id) {
-      var step = <TodoListItem key={id}
+      var step = <StepListItem key={id}
                                step={this.props.steps[id]}
                                todo_id={this.props.todo_id}/>;
       steps.push(step);

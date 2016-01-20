@@ -8,19 +8,10 @@ var StepDoneButton = React.createClass({
   },
 
   render: function () {
-    if(this.props.step.done) {
-      text = "Undo!";
-      classname = "btn btn-xs btn-danger done-step-button";
-    } else {
-      text = "Done!";
-      classname = "btn btn-xs btn-success done-step-button";
-    }
     var text = this.props.step.done ? "Undo" : "Done";
 
     return (
-      <button
-        className={classname}
-        onClick={this.handleDone}>{text}</button>
+      <button onClick={this.handleDone}>{text}</button>
     );
   }
 });

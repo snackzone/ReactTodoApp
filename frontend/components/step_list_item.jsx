@@ -5,11 +5,8 @@ var StepListItem = React.createClass({
   render: function () {
     return (
       <div className="step-list-item">
-        <div className="step-header">
-          { this.props.step.title }
+          <p>{this.props.step.description}</p>
           <StepDoneButton step={this.props.step} todo_id={this.props.todo_id}/>
-          <p> {this.props.step.body}</p>
-        </div>
       </div>
     );
   }
