@@ -1,4 +1,4 @@
-class TodoStepsController < ApplicationController
+class Api::TodoStepsController < ApplicationController
   def index
     @steps = Todo.find(params[:todo_id]).todo_steps
 

@@ -2,9 +2,9 @@ var _steps = {};
 var _callbacks = [];
 
 var StepStore = {
-  all: function () {
+  all: function (todoId) {
     //is this dangerous?
-    return _steps;
+    return _steps[todoId];
   },
   fetch: function (todoId) {
     $.ajax(

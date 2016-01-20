@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TodoStepsControllerTest < ActionController::TestCase
+class Api::TodoStepsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

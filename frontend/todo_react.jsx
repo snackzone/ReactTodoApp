@@ -1,4 +1,5 @@
-TodoStore = require('./stores/todo_store.js');
+TodoStore = require('./stores/todo_store');
+StepStore = require('./stores/step_store');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var TodoList = require('./components/todo_list.jsx');
