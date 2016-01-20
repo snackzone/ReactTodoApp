@@ -4,13 +4,14 @@ var _callbacks = [];
 var StepStore = {
   all: function (todoId) {
     //is this dangerous?
-    return _steps[todoId];
+    return _steps[todoId] || {};
   },
-  fetch: function (todoId) {
+
+  fetch: function (todo_id) {
     $.ajax(
       {
         method: "GET",
-        url: "/api/todos/" + todoId + "/todo_steps",
+        url: "/api/todos/" + todo_id + "/todo_steps",
         dataType: "json",
         success: function (steps) {
           var newSteps = {};
@@ -18,7 +19,7 @@ var StepStore = {
             newSteps[step.id] = step;
           });
 
-          _steps[todoId] = newSteps;
+          _steps[todo_id] = newSteps;
           StepStore.changed();
         },
         failure: function () {
@@ -88,7 +89,6 @@ var StepStore = {
   },
 
   addChangedHandler: function (handler) {
-    console.log(handler);
     _callbacks.push(handler);
   },
 

@@ -1,19 +1,17 @@
 var React = require('react');
 var TodoStore = require('../stores/todo_store');
-var TodoStep = require('./todo_step.jsx');
-var StepStore = require('../stores/step_store');
+var StepList = require('./step_list.jsx');
 
 
 var TodoDetailView = React.createClass({
   getInitialState: function () {
     return (
-      { todoSteps: StepStore.all(this.props.todo.id) }
+      { steps: StepStore.all(this.props.todo.id) }
     );
   },
 
-  handleDestroy: function (e) {
-    e.preventDefault();
-    TodoStore.destroy(this.props.todo.id);
+  stepsChanged: function () {
+    this.setState({steps: StepStore.all(this.props.todo.id)});
   },
 
   componentDidMount: function () {
@@ -21,13 +19,12 @@ var TodoDetailView = React.createClass({
     StepStore.fetch(this.props.todo.id);
   },
 
-  stepsChanged: function () {
-    this.setState({todoSteps: StepStore.all(this.props.todo.id)});
+  handleDestroy: function (e) {
+    e.preventDefault();
+    TodoStore.destroy(this.props.todo.id);
   },
 
   render: function () {
-    var steps = [];
-
     return (
       <div className="todo-details">
         <div className="body">
@@ -37,9 +34,7 @@ var TodoDetailView = React.createClass({
                 onClick={this.handleDestroy}>
                   Delete Todo
         </button>
-        <ul>
-          {steps}
-        </ul>
+        <StepList todo_id={this.props.todo.id} steps={this.state.steps} />
       </div>
     );
   }
