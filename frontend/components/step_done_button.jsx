@@ -4,7 +4,7 @@ var StepStore = require('../stores/step_store');
 var StepDoneButton = React.createClass({
   handleDone: function(event){
     event.stopPropagation();
-    StepStore.toggleDone(this.props.todo_id, this.props.step.id);
+    StepStore.toggleDone(this.props.step);
   },
 
   render: function () {

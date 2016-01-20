@@ -73,10 +73,13 @@ var StepStore = {
         method: "PATCH",
         url: "/api/todo_steps/" + step.id,
         dataType: "json",
-        data: {step: {done: done} },
+        data: {todo_step: {done: done} },
         success: function (step) {
           _steps[step.todo_id][step.id].done = done;
           StepStore.changed();
+        },
+        error: function () {
+          console.log("errrrr");
         }
       }
     );
